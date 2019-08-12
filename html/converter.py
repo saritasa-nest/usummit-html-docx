@@ -5,7 +5,8 @@ Converter recursively iterating over HTML ElementTree(etree)
 mapping HTML tags to their corresponding python-docx functions.
 Appending full HTML structure to the given document.
 """
-from mindboard.helpers.docx.html.dispatcher import get_tag_dispatcher
+from html_docx.html.dispatcher import get_tag_dispatcher
+from docx.text.paragraph import Paragraph
 
 
 class DocxBuilder(object):
@@ -35,9 +36,17 @@ class DocxBuilder(object):
             new_container = dispatcher.append_head(html_element, container)
 
         children = list(html_element)
+        ##paragraph flow seems bugged, maybe this check container will fix it]
+
+        check_container = None
         for child in children:
-            self._append_docx_elements(child, new_container)
+            if isinstance(check_container, Paragraph):
+                new_container=check_container
+            check_container = self._append_docx_elements(child, new_container)
+
+
 
         dispatcher = get_tag_dispatcher(html_element.getparent().tag)
         if html_element.tail and dispatcher:
             dispatcher.append_tail(html_element, container)
+        return new_container

@@ -1,5 +1,5 @@
 # encoding: utf-8
-from mindboard.helpers.docx.html.tag_dispatchers import TagDispatcher, replace_whitespaces
+from html_docx.html.tag_dispatchers import TagDispatcher, replace_whitespaces
 
 
 class ParagraphDispatcher(TagDispatcher):

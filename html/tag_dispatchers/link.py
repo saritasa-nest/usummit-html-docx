@@ -1,6 +1,6 @@
 # encoding: utf-8
-from mindboard.helpers.docx.html.tag_dispatchers import TagDispatcher
-
+from html_docx.html.tag_dispatchers import TagDispatcher
+import docxext
 
 class LinkDispatcher(TagDispatcher):
     def __init__(self):
@@ -8,16 +8,22 @@ class LinkDispatcher(TagDispatcher):
 
     @classmethod
     def append_head(cls, element, container):
-        return cls._append_link(element.text, container)
+        print("weinhere")
+        test = cls._append_link(element, container)
+        return test
 
     @classmethod
     def append_tail(cls, element, container):
         return cls._append_link(element.tail, container)
 
     @classmethod
-    def _append_link(cls, text, container):
+    def _append_link(cls, element, container):
         """
         <a> creates a link element inside a docx container element.
         """
-        container.add_run(text=text)
+        text = element.text
+        href = element.attrib["href"]
+        if text is None or  text =='':
+            text = href
+        docxext.insert_hyperlink(container, text, href)
         return container

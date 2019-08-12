@@ -1,13 +1,13 @@
 # encoding: utf-8
 
 # map of HTML list tags and their docx styles
-from mindboard.helpers.docx.html.tag_dispatchers import TagDispatcher, replace_whitespaces
+from html_docx.html.tag_dispatchers import TagDispatcher, replace_whitespaces
 
 _list_style = dict(
     ol='ListNumber',
     ul='ListBullet',
 )
-
+import docx
 
 class ListItemDispatcher(TagDispatcher):
     def __init__(self):
@@ -35,5 +35,6 @@ class ListItemDispatcher(TagDispatcher):
         style = _list_style.get(element.getparent().tag, 'ListBullet')
         container.style = style
         container.add_run(text)
+        container.paragraph_format.space_after = docx.shared.Pt(0)
 
         return container

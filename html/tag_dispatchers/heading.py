@@ -1,5 +1,5 @@
 # encoding: utf-8
-from mindboard.helpers.docx.html.tag_dispatchers import TagDispatcher
+from html_docx.html.tag_dispatchers import TagDispatcher
 
 
 class HeadingDispatcher(TagDispatcher):
@@ -22,7 +22,7 @@ class HeadingDispatcher(TagDispatcher):
         <hx> Creates a heading paragraph inside the document container
         """
         level = int(tag[1:])
-        style = 'Title' if level == 0 else 'HEADING_%d' % level
+        style = 'Title' if level == 0 else 'Heading %d' % level
 
         container.text = text
         container.style = style
