@@ -1,4 +1,4 @@
-from html import add_html
+from html_to_docx import add_html
 
 from docx import Document
 
