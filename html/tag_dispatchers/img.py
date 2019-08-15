@@ -1,8 +1,10 @@
-from . import TagDispatcher
 from base64 import b64decode
 from io import BytesIO
-from docx.shared import Inches
+
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
+from docx.shared import Inches
+
+from . import TagDispatcher
 
 MAX_WIDTH = Inches(7.5)
 MAX_LENGTH = Inches(8)
@@ -26,7 +28,7 @@ class ImgDispatcher(TagDispatcher):
         <img> lets see if this can work.....
         """
         base64image = element.attrib['src'].split('base64,')[1]
-        image_filelike =  BytesIO(b64decode(base64image))
+        image_filelike = BytesIO(b64decode(base64image))
 
         run = container.add_run()
         run.add_break()
@@ -34,8 +36,8 @@ class ImgDispatcher(TagDispatcher):
 
         if inline_shape.width > MAX_WIDTH:
             scalar = MAX_WIDTH/inline_shape.width
-            inline_shape.width = int(scalar* inline_shape.width)
-            inline_shape.height = int(scalar* inline_shape.height)
+            inline_shape.width = int(scalar * inline_shape.width)
+            inline_shape.height = int(scalar * inline_shape.height)
 
         if inline_shape.height > MAX_LENGTH:
             scalar = MAX_LENGTH / inline_shape.height

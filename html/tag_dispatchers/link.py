@@ -1,5 +1,6 @@
-from . import TagDispatcher
 import docx
+
+from . import TagDispatcher
 
 
 def add_hyperlink(paragraph, url, text, color='0000FF', underline=True):

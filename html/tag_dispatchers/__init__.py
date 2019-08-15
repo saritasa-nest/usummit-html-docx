@@ -1,4 +1,5 @@
 import re
+
 from docx.document import Document
 from docx.table import _Cell
 from docx.text.paragraph import Paragraph

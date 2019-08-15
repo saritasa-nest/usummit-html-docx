@@ -1,4 +1,5 @@
 from docx.enum.text import WD_BREAK
+
 from . import TagDispatcher, replace_whitespaces
 
 

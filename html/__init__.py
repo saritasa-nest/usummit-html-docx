@@ -5,6 +5,7 @@ Wrapper methods used for mapping HTML to docx objects
 """
 
 from lxml.html import fromstring
+
 from .converter import DocxBuilder
 
 

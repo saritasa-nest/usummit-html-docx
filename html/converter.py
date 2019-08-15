@@ -3,8 +3,9 @@ Converter recursively iterating over HTML ElementTree(etree)
 mapping HTML tags to their corresponding python-docx functions.
 Appending full HTML structure to the given document.
 """
-from .dispatcher import get_tag_dispatcher
 from docx.text.paragraph import Paragraph
+
+from .dispatcher import get_tag_dispatcher
 
 
 class DocxBuilder(object):

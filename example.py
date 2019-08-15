@@ -1,11 +1,11 @@
 from html import add_html
-from docx import Document
 
+from docx import Document
 
 example_html = """
 <h1 fr-original-style=\'\\"\\"\'>header 1</h1><h2>header 2</h2><h3>header 3
-</h3><h4>header 4</h4><span style="font-size: 18px;">Some text</span><p 
-fr-original-style=\'\\"\\"\'>When covering a <em>session, plea<strong>se follow
+</h3><h4>header 4</h4><span style="font-size: 18px;">Some text</span><p
+ fr-original-style=\'\\"\\"\'>When covering a <em>session, plea<strong>se follow
  these 4 steps. </strong>Be brief and concis</em>e with answers:</p><p 
  fr-original-style=\'\\"\\"\'>1. Select priority (high, mediu<em>m or low) in 
  th<strong>e ‘select tags’ drop down menu located above</strong></em></p><p 

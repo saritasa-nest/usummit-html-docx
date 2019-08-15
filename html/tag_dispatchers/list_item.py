@@ -1,4 +1,5 @@
 import docx
+
 from . import TagDispatcher, replace_whitespaces
 
 _list_style = dict(

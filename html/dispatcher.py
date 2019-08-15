@@ -7,12 +7,12 @@ from .tag_dispatchers.blockquote import BlockquoteDispatcher
 from .tag_dispatchers.code import CodeDispatcher
 from .tag_dispatchers.emphasis import EmphasisDispatcher
 from .tag_dispatchers.heading import HeadingDispatcher
+from .tag_dispatchers.img import ImgDispatcher
 from .tag_dispatchers.linebreak import LineBreakDispatcher
 from .tag_dispatchers.link import LinkDispatcher
 from .tag_dispatchers.list_item import ListItemDispatcher
 from .tag_dispatchers.paragraph import ParagraphDispatcher
 from .tag_dispatchers.strong import StrongDispatcher
-from .tag_dispatchers.img import ImgDispatcher
 
 
 def get_tag_dispatcher(html_tag):

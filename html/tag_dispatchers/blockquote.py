@@ -13,6 +13,7 @@ class BlockquoteDispatcher(TagDispatcher):
     @classmethod
     def _append_blockquote(cls, container):
         """
-        <blockquote> creates a quote styled paragraph inside a docx container element.
+        <blockquote> creates a quote styled paragraph inside a docx container
+        element.
         """
         return container
