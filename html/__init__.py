@@ -9,7 +9,6 @@ from .converter import DocxBuilder
 
 
 def add_html(container, html_string):
-
     root = fromstring(html_string)
     builder = DocxBuilder(container=container)
     builder.from_html_tree(root=root)

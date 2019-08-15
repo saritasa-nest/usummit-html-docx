@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 """
 Returns corresponding objects to call for creating
 the different docx elements.
