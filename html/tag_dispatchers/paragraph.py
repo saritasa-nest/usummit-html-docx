@@ -1,11 +1,7 @@
-# encoding: utf-8
-from html_docx.html.tag_dispatchers import TagDispatcher, replace_whitespaces
+from . import TagDispatcher, replace_whitespaces
 
 
 class ParagraphDispatcher(TagDispatcher):
-    def __init__(self):
-        super(ParagraphDispatcher, self).__init__()
-
     @classmethod
     def append_head(cls, element, container):
         paragraph = cls.get_new_paragraph(container)

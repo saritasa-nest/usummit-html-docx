@@ -1,18 +1,13 @@
-# encoding: utf-8
-
-# map of HTML list tags and their docx styles
-from html_docx.html.tag_dispatchers import TagDispatcher, replace_whitespaces
+import docx
+from . import TagDispatcher, replace_whitespaces
 
 _list_style = dict(
     ol='ListNumber',
     ul='ListBullet',
 )
-import docx
+
 
 class ListItemDispatcher(TagDispatcher):
-    def __init__(self):
-        super(ListItemDispatcher, self).__init__()
-
     @classmethod
     def append_head(cls, element, container):
         paragraph = cls.get_new_paragraph(container)

@@ -1,11 +1,7 @@
-# encoding: utf-8
-from html_docx.html.tag_dispatchers import TagDispatcher, replace_whitespaces
+from . import TagDispatcher, replace_whitespaces
 
 
 class EmphasisDispatcher(TagDispatcher):
-    def __init__(self):
-        super(EmphasisDispatcher, self).__init__()
-
     @classmethod
     def append_head(cls, element, container):
         return cls._append_emphasis(element.text, element, container)

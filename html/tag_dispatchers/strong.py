@@ -1,11 +1,7 @@
-# encoding: utf-8
-from html_docx.html.tag_dispatchers import TagDispatcher, replace_whitespaces
+from . import TagDispatcher, replace_whitespaces
 
 
 class StrongDispatcher(TagDispatcher):
-    def __init__(self):
-        super(StrongDispatcher, self).__init__()
-
     @classmethod
     def append_head(cls, element, container):
         return cls._append_strong(element.text, element, container)

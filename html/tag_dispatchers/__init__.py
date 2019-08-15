@@ -1,4 +1,3 @@
-# encoding: utf-8
 import re
 from docx.document import Document
 from docx.table import _Cell
@@ -6,9 +5,6 @@ from docx.text.paragraph import Paragraph
 
 
 class TagDispatcher(object):
-    def __init__(self):
-        super(TagDispatcher, self).__init__()
-
     @classmethod
     def append_head(cls, element, container):
         raise NotImplementedError("Implemented in inheriting classes")

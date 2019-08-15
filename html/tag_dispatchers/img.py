@@ -1,5 +1,4 @@
-# encoding: utf-8
-from html_docx.html.tag_dispatchers import TagDispatcher, replace_whitespaces
+from . import TagDispatcher
 from base64 import b64decode
 from io import BytesIO
 from docx.shared import Inches
@@ -8,10 +7,8 @@ from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 MAX_WIDTH = Inches(7.5)
 MAX_LENGTH = Inches(8)
 
-class ImgDispatcher(TagDispatcher):
-    def __init__(self):
-        super(ImgDispatcher, self).__init__()
 
+class ImgDispatcher(TagDispatcher):
     @classmethod
     def append_head(cls, element, container):
         container = cls.get_current_paragraph(container)
@@ -31,7 +28,6 @@ class ImgDispatcher(TagDispatcher):
         base64image = element.attrib['src'].split('base64,')[1]
         image_filelike =  BytesIO(b64decode(base64image))
 
-        #container =container._parent.add_paragraph()
         run = container.add_run()
         run.add_break()
         inline_shape = run.add_picture(image_filelike)
@@ -47,9 +43,5 @@ class ImgDispatcher(TagDispatcher):
             inline_shape.height = int(scalar * inline_shape.height)
 
         container.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
-
-        print("here")
-       #container.add_picture(image_filelike)
-
 
         return container

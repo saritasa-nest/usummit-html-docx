@@ -5,7 +5,7 @@ Converter recursively iterating over HTML ElementTree(etree)
 mapping HTML tags to their corresponding python-docx functions.
 Appending full HTML structure to the given document.
 """
-from html_docx.html.dispatcher import get_tag_dispatcher
+from .dispatcher import get_tag_dispatcher
 from docx.text.paragraph import Paragraph
 
 

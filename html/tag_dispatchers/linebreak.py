@@ -1,12 +1,8 @@
-# encoding: utf-8
 from docx.enum.text import WD_BREAK
-from html_docx.html.tag_dispatchers import TagDispatcher, replace_whitespaces
+from . import TagDispatcher, replace_whitespaces
 
 
 class LineBreakDispatcher(TagDispatcher):
-    def __init__(self):
-        super(LineBreakDispatcher, self).__init__()
-
     @classmethod
     def append_head(cls, element, container):
         return cls._append_line_break(element, container)

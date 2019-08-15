@@ -3,12 +3,8 @@ from html_docx.html.tag_dispatchers import TagDispatcher
 import docxext
 
 class LinkDispatcher(TagDispatcher):
-    def __init__(self):
-        super(LinkDispatcher, self).__init__()
-
     @classmethod
     def append_head(cls, element, container):
-        print("weinhere")
         test = cls._append_link(element, container)
         return test
 

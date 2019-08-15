@@ -1,11 +1,7 @@
-# encoding: utf-8
-from html_docx.html.tag_dispatchers import TagDispatcher
+from . import TagDispatcher
 
 
 class BlockquoteDispatcher(TagDispatcher):
-    def __init__(self):
-        super(BlockquoteDispatcher, self).__init__()
-
     @classmethod
     def append_head(cls, element, container):
         return cls._append_blockquote(container)
