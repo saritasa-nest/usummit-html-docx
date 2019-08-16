@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="html-to-docx",
-    version="0.1.0",
+    version="0.1.1",
     author="Example Author",
     author_email="author@example.com",
     description=(
@@ -23,6 +23,6 @@ setuptools.setup(
     ],
     install_requires=[
         "lxml==4.4.1",
-        "python-docx==0.8.10",
+        "python-docx==0.8.7",
     ],
 )
