@@ -19,6 +19,6 @@ class StrongDispatcher(TagDispatcher):
         text = replace_whitespaces(text)
         run = container.add_run(text=text)
         run.bold = True
-        if element.getparent().tag == 'em':
+        if element.getparent().tag in ['em', 'i']:
             run.italic = True
         return container

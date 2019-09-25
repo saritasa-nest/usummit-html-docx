@@ -12,6 +12,7 @@ from .tag_dispatchers.linebreak import LineBreakDispatcher
 from .tag_dispatchers.link import LinkDispatcher
 from .tag_dispatchers.list_item import ListItemDispatcher
 from .tag_dispatchers.paragraph import ParagraphDispatcher
+from .tag_dispatchers.span import SpanDispatcher
 from .tag_dispatchers.strong import StrongDispatcher
 
 
@@ -31,8 +32,11 @@ _dispatch_html = dict(
     li=ListItemDispatcher(),
     br=LineBreakDispatcher(),
     code=CodeDispatcher(),
+    b=StrongDispatcher(),
     strong=StrongDispatcher(),
     em=EmphasisDispatcher(),
+    i=EmphasisDispatcher(),
+    span=SpanDispatcher(),
     h1=heading_dispatcher,
     h2=heading_dispatcher,
     h3=heading_dispatcher,

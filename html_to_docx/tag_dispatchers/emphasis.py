@@ -19,6 +19,6 @@ class EmphasisDispatcher(TagDispatcher):
         text = replace_whitespaces(text)
         run = container.add_run(text=text)
         run.italic = True
-        if element.getparent().tag == 'strong':
+        if element.getparent().tag in ['b', 'strong']:
             run.bold = True
         return container
