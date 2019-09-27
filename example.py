@@ -29,3 +29,6 @@ document.save('added.docx')
 
 new_document = create_document_from_html(example_html)
 new_document.save('new.docx')
+
+new_document = create_document_from_html(example_html, plain_links=True)
+new_document.save('new_plain_links.docx')

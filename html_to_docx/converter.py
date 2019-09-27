@@ -19,16 +19,16 @@ class DocxBuilder(object):
         """
         self._root_container = container
 
-    def from_html_tree(self, root):
+    def from_html_tree(self, root, plain_links=False):
         """Appending all the HTML elements, beginning at root object.
 
         Args:
             root (str): String with parsed HTML.
 
         """
-        self._append_docx_elements(root, self._root_container)
+        self._append_docx_elements(root, self._root_container, plain_links)
 
-    def _append_docx_elements(self, html_element, container):
+    def _append_docx_elements(self, html_element, container, plain_links):
         """Append elements parsed from HTML to the docx container.
 
         Retrieving and calling a creating object for the given HTML tag.
@@ -39,7 +39,7 @@ class DocxBuilder(object):
             container (Document): Container for appending HTML content.
 
         """
-        dispatcher = get_tag_dispatcher(html_element.tag)
+        dispatcher = get_tag_dispatcher(html_element.tag, plain_links)
         # only call when a function is attached to tag
         new_container = container
         if dispatcher:
@@ -53,9 +53,9 @@ class DocxBuilder(object):
         for child in children:
             if isinstance(check_container, Paragraph):
                 new_container = check_container
-            check_container = self._append_docx_elements(child, new_container)
+            check_container = self._append_docx_elements(child, new_container, plain_links)
 
-        dispatcher = get_tag_dispatcher(html_element.getparent().tag)
+        dispatcher = get_tag_dispatcher(html_element.getparent().tag, plain_links)
         if html_element.tail and dispatcher:
             dispatcher.append_tail(html_element, container)
         return new_container

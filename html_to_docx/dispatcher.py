@@ -9,17 +9,22 @@ from .tag_dispatchers.emphasis import EmphasisDispatcher
 from .tag_dispatchers.heading import HeadingDispatcher
 from .tag_dispatchers.img import ImgDispatcher
 from .tag_dispatchers.linebreak import LineBreakDispatcher
-from .tag_dispatchers.link import LinkDispatcher
+from .tag_dispatchers.link import LinkDispatcher, LinkAsTextDispatcher
 from .tag_dispatchers.list_item import ListItemDispatcher
 from .tag_dispatchers.paragraph import ParagraphDispatcher
 from .tag_dispatchers.span import SpanDispatcher
 from .tag_dispatchers.strong import StrongDispatcher
 
 
-def get_tag_dispatcher(html_tag):
+def get_tag_dispatcher(html_tag, plain_links=False):
     """
     Returning the object creating OOXML for the given HTML tag
     """
+    if plain_links:
+        _dispatch_html['a'] = LinkAsTextDispatcher
+    else:
+        _dispatch_html['a'] = LinkDispatcher
+
     return _dispatch_html.get(html_tag)
 
 

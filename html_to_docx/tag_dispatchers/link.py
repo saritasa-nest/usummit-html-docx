@@ -1,6 +1,6 @@
 import docx
-
-from . import TagDispatcher
+from docx.shared import RGBColor
+from . import TagDispatcher, replace_whitespaces
 
 
 def add_hyperlink(paragraph, url, text, color='0000FF', underline=True):
@@ -77,4 +77,39 @@ class LinkDispatcher(TagDispatcher):
             text = href
 
         add_hyperlink(container, href, text)
+        return container
+
+
+class LinkAsTextDispatcher(TagDispatcher):
+    """Dispatches hyperlink as text.
+
+    Use this dispatcher if you have any problems with received DOCX hyperlinks.
+
+    Example:
+        hyperlink_name (http://www...)
+
+    """
+    @classmethod
+    def append_head(cls, element, container):
+        test = cls._append_link(element, container)
+        return test
+
+    @classmethod
+    def append_tail(cls, element, container):
+        return cls._append_link(element.tail, container)
+
+    @classmethod
+    def _append_link(cls, element, container):
+        """
+        <a> creates a link element inside a docx container element.
+        """
+        text = element.text
+        text = replace_whitespaces(text)
+        href = element.attrib['href']
+        text = f'{text} ({href})'
+
+        # highlight with '0000FF' color
+        run = container.add_run(text=text)
+        run.font.color.rgb = RGBColor(0x00, 0x00, 0xff)
+
         return container
