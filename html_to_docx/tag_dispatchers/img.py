@@ -27,7 +27,11 @@ class ImgDispatcher(TagDispatcher):
         First real add on to this thing -kevin
         <img> lets see if this can work.....
         """
-        base64image = element.attrib['src'].split('base64,')[1]
+        scr = element.attrib['src']
+        if 'base64,' not in scr:
+            return container
+
+        base64image = scr.split('base64,')[1]
         image_filelike = BytesIO(b64decode(base64image))
 
         run = container.add_run()
