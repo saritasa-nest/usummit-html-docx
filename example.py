@@ -4,10 +4,10 @@ from html_to_docx import add_html, create_document_from_html
 
 example_html = """
 <h1>Header level 1</h1>
+Unwrapped text
 <h2>Header level 2</h2>
-<p fr-original-style='\"\"'><strong fr-original-style='\"\"'>Presenting author
-</strong></p><p fr-original-style='\"\"'>
-<span style="font-size: 24px;">CHAIR: Jorge Cortes</span>
+<p><strong>Presenting author</strong></p>
+<p><span style="font-size: 24px;">CHAIR: Jorge Cortes</span>
 <br>PRESENTERS: Lars Bullinger (Charité University Berlin, Germany), 
 Adriano Venditti (University ofRome Tor Vergata, Italy), Niel Russell 
 (University of Nottingham, UK), Pau Montesinos (Hospital Universitari i 
