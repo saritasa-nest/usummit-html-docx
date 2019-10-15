@@ -23,7 +23,7 @@ class ParagraphDispatcher(TagDispatcher):
 
         style = None
         if element.getparent().tag == 'blockquote':
-            style = 'IntenseQuote'
+            style = 'Intense Quote Char'
 
         container.add_run(text=text, style=style)
         return container

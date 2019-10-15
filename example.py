@@ -21,6 +21,7 @@ overflowing)<strong fr-original-style='\"\"'>/traffic at the poster&nbsp;
 </strong></em></p><p fr-original-style='\"\"'>Full room, 
 <strong>300 attendees</strong> 
 <em>approximately.&nbsp;</em></p>
+<blockquote><p>Block quoted paragraph</p></blockquote>
 """
 
 document = Document()
