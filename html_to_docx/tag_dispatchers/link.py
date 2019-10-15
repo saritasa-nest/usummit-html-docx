@@ -1,5 +1,6 @@
 import docx
 from docx.shared import RGBColor
+
 from . import TagDispatcher, replace_whitespaces
 
 

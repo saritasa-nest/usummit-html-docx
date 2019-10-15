@@ -8,6 +8,7 @@ Unwrapped text
 <h2>Header level 2</h2>
 <p><strong>Presenting author</strong></p>
 <p><span style="font-size: 24px;">CHAIR: Jorge Cortes</span>
+<p><span style="font-size: 44px;">CHAIR: Jorge Cortes</span>
 <br>PRESENTERS: Lars Bullinger (Charité University Berlin, Germany), 
 Adriano Venditti (University ofRome Tor Vergata, Italy), Niel Russell 
 (University of Nottingham, UK), Pau Montesinos (Hospital Universitari i 

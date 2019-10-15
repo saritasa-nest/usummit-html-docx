@@ -9,7 +9,7 @@ from .tag_dispatchers.emphasis import EmphasisDispatcher
 from .tag_dispatchers.heading import HeadingDispatcher
 from .tag_dispatchers.img import ImgDispatcher
 from .tag_dispatchers.linebreak import LineBreakDispatcher
-from .tag_dispatchers.link import LinkDispatcher, LinkAsTextDispatcher
+from .tag_dispatchers.link import LinkAsTextDispatcher, LinkDispatcher
 from .tag_dispatchers.list_item import ListItemDispatcher
 from .tag_dispatchers.paragraph import ParagraphDispatcher
 from .tag_dispatchers.span import SpanDispatcher
