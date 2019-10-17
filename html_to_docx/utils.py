@@ -92,9 +92,9 @@ def get_or_add_style(document, style_name, style_type):
 
     """
     # `get_by_id` returns default style if a style with defined name not found
-    existent_style = document.styles.get_by_id(style_name, style_type)
 
-    if style_name == existent_style.name:
-        return existent_style, False
-
-    return document.styles.add_style(style_name, style_type), True
+    try:
+        style_id = document.styles._get_style_id_from_name(style_name, style_type)
+        return document.styles.get_by_id(style_id, style_type), False
+    except KeyError:
+        return document.styles.add_style(style_name, style_type), True

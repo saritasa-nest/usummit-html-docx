@@ -2,10 +2,10 @@ from docx.enum.style import WD_STYLE_TYPE
 from docx.shared import Pt
 
 from ..utils import get_document, get_or_add_style, parse_style
-from . import TagDispatcher, replace_whitespaces
+from . import ParentTagMixin, TagDispatcher, replace_whitespaces
 
 
-class SpanDispatcher(TagDispatcher):
+class SpanDispatcher(ParentTagMixin, TagDispatcher):
 
     @classmethod
     def append_head(cls, element, container):
@@ -37,8 +37,10 @@ class SpanDispatcher(TagDispatcher):
             if is_new:
                 span_style.font.size = Pt(html_style['font_size'])
 
-            container.add_run(text=text, style=span_style)
+            run = container.add_run(text=text, style=span_style)
         else:
-            container.add_run(text=text)
+            run = container.add_run(text=text)
+
+        run = cls._apply_parent_formatting(element, run)
 
         return container

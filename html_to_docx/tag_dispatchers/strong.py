@@ -1,7 +1,7 @@
-from . import TagDispatcher, replace_whitespaces
+from . import ParentTagMixin, TagDispatcher, replace_whitespaces
 
 
-class StrongDispatcher(TagDispatcher):
+class StrongDispatcher(ParentTagMixin, TagDispatcher):
     @classmethod
     def append_head(cls, element, container):
         return cls._append_strong(element.text, element, container)
@@ -19,6 +19,5 @@ class StrongDispatcher(TagDispatcher):
         text = replace_whitespaces(text)
         run = container.add_run(text=text)
         run.bold = True
-        if element.getparent().tag in ['em', 'i']:
-            run.italic = True
+        run = cls._apply_parent_formatting(element, run)
         return container

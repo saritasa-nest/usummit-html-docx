@@ -6,8 +6,9 @@ example_html = """
 <h1>Header level 1</h1>
 Unwrapped text
 <h2>Header level 2</h2>
-<p><strong>Presenting author</strong></p>
-<p><span style="font-size: 24px;">CHAIR: Jorge Cortes</span>
+<p><u>u <em>u+em <strong>u+em+strong </em>u+strong </strong>u</u></p>
+<p><u>u <span style="font-size: 24px;">u+span </span></u></p>
+<p><span style="font-size: 24px;">CHAIR: Jorge Cortes</span></p>
 <p><span style="font-size: 44px;">CHAIR: Jorge Cortes</span>
 <br>PRESENTERS: Lars Bullinger (Charité University Berlin, Germany), 
 Adriano Venditti (University ofRome Tor Vergata, Italy), Niel Russell 
