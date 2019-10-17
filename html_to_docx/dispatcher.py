@@ -14,6 +14,7 @@ from .tag_dispatchers.list_item import ListItemDispatcher
 from .tag_dispatchers.paragraph import ParagraphDispatcher
 from .tag_dispatchers.span import SpanDispatcher
 from .tag_dispatchers.strong import StrongDispatcher
+from .tag_dispatchers.underline import UnderlineDispatcher
 
 
 def get_tag_dispatcher(html_tag, plain_links=False):
@@ -49,5 +50,6 @@ _dispatch_html = dict(
     h5=heading_dispatcher,
     h6=heading_dispatcher,
     blockquote=BlockquoteDispatcher(),
-    img=ImgDispatcher()
+    img=ImgDispatcher(),
+    u=UnderlineDispatcher(),
 )

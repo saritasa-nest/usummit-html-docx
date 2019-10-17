@@ -55,7 +55,10 @@ class DocxBuilder(object):
                 new_container = check_container
             check_container = self._append_docx_elements(child, new_container, plain_links)
 
-        dispatcher = get_tag_dispatcher(html_element.getparent().tag, plain_links)
+        dispatcher = get_tag_dispatcher(
+            getattr(html_element.getparent(), 'tag', ''),
+            plain_links
+        )
         if html_element.tail and dispatcher:
             dispatcher.append_tail(html_element, container)
         return new_container

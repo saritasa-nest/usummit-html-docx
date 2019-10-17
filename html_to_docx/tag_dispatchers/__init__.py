@@ -1,8 +1,30 @@
 import re
 
 from docx.document import Document
+from docx.enum.text import WD_UNDERLINE
 from docx.table import _Cell
 from docx.text.paragraph import Paragraph
+
+
+class ParentTagMixin:
+    """Applies formatting from parent elements."""
+
+    @classmethod
+    def _apply_parent_formatting(cls, element, run):
+        """Applies formatting implemented in a parent element."""
+        if not element.getparent():
+            return run
+        if element.getparent().tag in ['em', 'i']:
+            run.italic = True
+        if element.getparent().tag in ['strong', 'b']:
+            run.bold = True
+        if element.getparent().tag == 'u':
+            run.underline = WD_UNDERLINE.SINGLE
+
+        # Applies formatting from parent's parent. Example:
+        # <u><strong><em>text</em></strong></u>
+        run = cls._apply_parent_formatting(element.getparent(), run)
+        return run
 
 
 class TagDispatcher(object):
