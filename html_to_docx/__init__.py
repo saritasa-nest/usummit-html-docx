@@ -6,7 +6,7 @@ from docx import Document
 from lxml.html import fromstring
 
 from .converter import DocxBuilder
-from .utils import tails_to_paragraphs
+from .utils import into_paragraphs
 
 
 def add_html(container, html_string, plain_links=False):
@@ -24,7 +24,7 @@ def add_html(container, html_string, plain_links=False):
 
     """
     root = fromstring(html_string)
-    root = tails_to_paragraphs(root)
+    root = into_paragraphs(root)
     builder = DocxBuilder(container=container)
     builder.from_html_tree(root=root, plain_links=plain_links)
     return container

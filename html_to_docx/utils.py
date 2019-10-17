@@ -4,30 +4,31 @@ from docx.document import Document
 from lxml import etree
 
 
-def tails_to_paragraphs(element):
-    """Wraps tails of HTML elements with `<p>` HTML tag.
+def into_paragraphs(element):
+    """Transforms Elements into paragraphs to convert them correctly. """
+    if element_is_paragraph(element):
+        return element
 
-    When converting HTML content into DOCX, unwrapped content is skipped, so
-    it's required to wrap them in some HTML tag.
-    Tag `<p>` selected because unwrapped text is expected to be displayed as a
-    paragraph.
+    if element.tag == 'div':
+        if all([element_is_paragraph(el) for el in element.getchildren()]):
+            return element
+        element.tag = 'p'
+        return element
 
-    Args:
-        element (lxml.html.HtmlElement): HTML element to process.
+    parent = etree.Element('p')
+    parent.append(element)
+    return parent
 
-    Returns:
-        element (lxml.html.HtmlElement): HTML element with wrapped tails.
 
-    """
-
-    for el in element:
-        if el.tail and el.tail.strip():
-            p = etree.Element('p')
-            p.text = el.tail.strip()
-            el.tail = None
-            el.addnext(p)
-
-    return element
+def element_is_paragraph(element):
+    """Checks that HTML element is a paragraph."""
+    return element.tag in [
+        'p',
+        'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+        'blockquote',
+        'li',
+        'code',
+    ]
 
 
 def parse_style(element):
