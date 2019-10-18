@@ -10,20 +10,15 @@ Unwrapped text
 <p><u>u <span style="font-size: 24px;">u+span </span></u></p>
 <p><span style="font-size: 24px;">CHAIR: Jorge Cortes</span></p>
 <p><span style="font-size: 44px;">CHAIR: Jorge Cortes</span>
-<br>PRESENTERS: Lars Bullinger (Charité University Berlin, Germany), 
-Adriano Venditti (University ofRome Tor Vergata, Italy), Niel Russell 
-(University of Nottingham, UK), Pau Montesinos (Hospital Universitari i 
-Politècnic La Fe, Spain). &nbsp; 
-<a href="https://github.com/">github link</a>
-</p>
-<p fr-original-style='\"\"'><i><b fr-original-style='\"\"'>
-Please note the estimated audience attendance&nbsp;</b></i>
-<em fr-original-style='\"\"'>(Low attendance, half-full, full, 
-overflowing)<strong fr-original-style='\"\"'>/traffic at the poster&nbsp;
-</strong></em></p><p fr-original-style='\"\"'>Full room, 
-<strong>300 attendees</strong> 
-<em>approximately.&nbsp;</em></p>
+<br>PRESENTER: Lars Bullinger (Charité University Berlin, Germany)
+<a href="https://github.com/">github link</a></p>
+<p><i><b>attendance</b></i><em>(Low attendance)<strong>traffic</strong></em></p>
+<p>Full room, <strong>300 attendees</strong> <em>approximately.&nbsp;</em></p>
 <blockquote><p>Block quoted paragraph</p></blockquote>
+<br>PRESENTER: Lars Bullinger
+<p>before link <a href="https://github.com/">github link</a> link tail</p>
+<ul><li>one</li><li>two</li></ul>
+<ol><li>one</li><li>two</li></ol>
 """
 
 document = Document()

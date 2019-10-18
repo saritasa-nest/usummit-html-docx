@@ -22,5 +22,5 @@ class UnderlineDispatcher(
         text = replace_whitespaces(text)
         run = container.add_run(text=text)
         run.underline = WD_UNDERLINE.SINGLE
-        run = cls._apply_parent_formatting(element, run)
+        cls._apply_parent_formatting(element, run)
         return container

@@ -33,7 +33,6 @@ def html_element_is_paragraph(element):
         'code',
         'li',
         'blockquote',
-        'div',
         'ul',
         'ol',
     )

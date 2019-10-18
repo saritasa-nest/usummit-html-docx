@@ -52,7 +52,7 @@ class CharacterTailMixin:
         """Appends tail to the current paragraph."""
         text = replace_whitespaces(element.tail)
         run = container.add_run(text=text)
-        run = cls._apply_parent_formatting(element, run)
+        cls._apply_parent_formatting(element, run)
         return container
 
 
