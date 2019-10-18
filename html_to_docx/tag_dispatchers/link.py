@@ -65,7 +65,9 @@ class LinkDispatcher(TagDispatcher):
 
     @classmethod
     def append_tail(cls, element, container):
-        return cls._append_link(element.tail, container)
+        text = replace_whitespaces(element.tail)
+        container.add_run(text=text)
+        return container
 
     @classmethod
     def _append_link(cls, element, container):
@@ -97,7 +99,9 @@ class LinkAsTextDispatcher(TagDispatcher):
 
     @classmethod
     def append_tail(cls, element, container):
-        return cls._append_link(element.tail, container)
+        text = replace_whitespaces(element.tail)
+        container.add_run(text=text)
+        return container
 
     @classmethod
     def _append_link(cls, element, container):
