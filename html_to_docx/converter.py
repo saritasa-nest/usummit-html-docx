@@ -3,7 +3,8 @@ Converter recursively iterating over HTML ElementTree(etree)
 mapping HTML tags to their corresponding python-docx functions.
 Appending full HTML structure to the given document.
 """
-from .dispatcher import get_tag_dispatcher, html_element_is_paragraph
+from .dispatcher import get_tag_dispatcher
+from .utils import html_element_is_paragraph
 
 
 class DocxBuilder(object):
@@ -45,7 +46,8 @@ class DocxBuilder(object):
         for child in children:
             container = self._append_docx_elements(child, container, plain_links)
 
-        if not html_element.tail:
+        tail = '' if not html_element.tail else html_element.tail.strip()
+        if not tail:
             return container
 
         parent = html_element.getparent()

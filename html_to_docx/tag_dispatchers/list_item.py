@@ -1,8 +1,8 @@
 from . import ParagraphTailMixin, TagDispatcher, replace_whitespaces
 
 _list_style = dict(
-    ol='ListNumber',
-    ul='ListBullet',
+    ol='List Number',
+    ul='List Bullet',
 )
 
 
@@ -21,7 +21,7 @@ class ListItemDispatcher(ParagraphTailMixin, TagDispatcher):
         text = replace_whitespaces(text)
         text = '' if text == ' ' else text
 
-        style = _list_style.get(element.getparent().tag, 'ListBullet')
+        style = _list_style.get(element.getparent().tag, 'List Bullet')
         container.style = style
         container.add_run(text)
 

@@ -53,20 +53,3 @@ _dispatch_html = dict(
     img=ImgDispatcher(),
     u=UnderlineDispatcher(),
 )
-
-
-def html_element_is_paragraph(element):
-    return element.tag in (
-        'p',
-        'h1',
-        'h2',
-        'h3',
-        'h4',
-        'h5',
-        'h6',
-        'img',
-        'code',
-        'li',
-        'blockquote',
-        'div',
-    )

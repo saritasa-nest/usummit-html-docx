@@ -6,11 +6,11 @@ from lxml import etree
 
 def into_paragraphs(element):
     """Transforms Elements into paragraphs to convert them correctly. """
-    if element_is_paragraph(element):
+    if html_element_is_paragraph(element):
         return element
 
     if element.tag == 'div':
-        if all([element_is_paragraph(el) for el in element.getchildren()]):
+        if all([html_element_is_paragraph(el) for el in element.getchildren()]):
             return element
         element.tag = 'p'
         return element
@@ -20,15 +20,23 @@ def into_paragraphs(element):
     return parent
 
 
-def element_is_paragraph(element):
-    """Checks that HTML element is a paragraph."""
-    return element.tag in [
+def html_element_is_paragraph(element):
+    return element.tag in (
         'p',
-        'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
-        'blockquote',
-        'li',
+        'h1',
+        'h2',
+        'h3',
+        'h4',
+        'h5',
+        'h6',
+        'img',
         'code',
-    ]
+        'li',
+        'blockquote',
+        'div',
+        'ul',
+        'ol',
+    )
 
 
 def parse_style(element):
