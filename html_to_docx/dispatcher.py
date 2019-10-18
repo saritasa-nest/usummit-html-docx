@@ -13,6 +13,7 @@ from .tag_dispatchers.link import LinkAsTextDispatcher, LinkDispatcher
 from .tag_dispatchers.list_item import ListItemDispatcher
 from .tag_dispatchers.paragraph import ParagraphDispatcher
 from .tag_dispatchers.span import SpanDispatcher
+from .tag_dispatchers.strike import StrikeDispatcher
 from .tag_dispatchers.strong import StrongDispatcher
 from .tag_dispatchers.underline import UnderlineDispatcher
 
@@ -34,22 +35,23 @@ heading_dispatcher = HeadingDispatcher()
 
 _dispatch_html = dict(
     p=ParagraphDispatcher(),
-    a=LinkDispatcher(),
-    li=ListItemDispatcher(),
-    br=LineBreakDispatcher(),
-    code=CodeDispatcher(),
-    b=StrongDispatcher(),
-    strong=StrongDispatcher(),
-    em=EmphasisDispatcher(),
-    i=EmphasisDispatcher(),
-    span=SpanDispatcher(),
     h1=heading_dispatcher,
     h2=heading_dispatcher,
     h3=heading_dispatcher,
     h4=heading_dispatcher,
     h5=heading_dispatcher,
     h6=heading_dispatcher,
+    li=ListItemDispatcher(),
+    code=CodeDispatcher(),
     blockquote=BlockquoteDispatcher(),
     img=ImgDispatcher(),
+    br=LineBreakDispatcher(),
+    a=LinkDispatcher(),
+    b=StrongDispatcher(),
+    strong=StrongDispatcher(),
+    em=EmphasisDispatcher(),
+    i=EmphasisDispatcher(),
+    span=SpanDispatcher(),
     u=UnderlineDispatcher(),
+    strike=StrikeDispatcher(),
 )
