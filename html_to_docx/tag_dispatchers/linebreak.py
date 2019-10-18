@@ -1,16 +1,12 @@
 from docx.enum.text import WD_BREAK
 
-from . import TagDispatcher, replace_whitespaces
+from . import ParagraphTailMixin, TagDispatcher, replace_whitespaces
 
 
-class LineBreakDispatcher(TagDispatcher):
+class LineBreakDispatcher(ParagraphTailMixin, TagDispatcher):
     @classmethod
     def append_head(cls, element, container):
         return cls._append_line_break(element, container)
-
-    @classmethod
-    def append_tail(cls, element, container):
-        pass
 
     @classmethod
     def _append_line_break(cls, element, container):
