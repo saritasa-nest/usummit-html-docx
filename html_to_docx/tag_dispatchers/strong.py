@@ -1,14 +1,15 @@
-from . import ParentTagMixin, TagDispatcher, replace_whitespaces
+from . import (CharacterTailMixin, ParentTagMixin, TagDispatcher,
+               replace_whitespaces)
 
 
-class StrongDispatcher(ParentTagMixin, TagDispatcher):
+class StrongDispatcher(
+    ParentTagMixin,
+    CharacterTailMixin,
+    TagDispatcher,
+):
     @classmethod
     def append_head(cls, element, container):
         return cls._append_strong(element.text, element, container)
-
-    @classmethod
-    def append_tail(cls, element, container):
-        return cls._append_strong(element.tail, element, container)
 
     @classmethod
     def _append_strong(cls, text, element, container):

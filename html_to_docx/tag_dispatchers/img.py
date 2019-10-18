@@ -4,21 +4,16 @@ from io import BytesIO
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from docx.shared import Inches
 
-from . import TagDispatcher
+from . import ParagraphTailMixin, TagDispatcher
 
 MAX_WIDTH = Inches(7.5)
 MAX_LENGTH = Inches(8)
 
 
-class ImgDispatcher(TagDispatcher):
+class ImgDispatcher(ParagraphTailMixin, TagDispatcher):
     @classmethod
     def append_head(cls, element, container):
-        container = cls.get_current_paragraph(container)
-        return cls._append_img(element, container)
-
-    @classmethod
-    def append_tail(cls, element, container):
-
+        container = cls.get_new_paragraph(container)
         return cls._append_img(element, container)
 
     @classmethod

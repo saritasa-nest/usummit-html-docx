@@ -1,16 +1,17 @@
 from docx.enum.text import WD_UNDERLINE
 
-from . import ParentTagMixin, TagDispatcher, replace_whitespaces
+from . import (CharacterTailMixin, ParentTagMixin, TagDispatcher,
+               replace_whitespaces)
 
 
-class UnderlineDispatcher(ParentTagMixin, TagDispatcher):
+class UnderlineDispatcher(
+    ParentTagMixin,
+    CharacterTailMixin,
+    TagDispatcher
+):
     @classmethod
     def append_head(cls, element, container):
         return cls._append_underline(element.text, element, container)
-
-    @classmethod
-    def append_tail(cls, element, container):
-        return cls._append_underline(element.tail, element, container)
 
     @classmethod
     def _append_underline(cls, text, element, container):

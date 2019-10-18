@@ -27,6 +27,35 @@ class ParentTagMixin:
         return run
 
 
+class ParagraphTailMixin:
+
+    @classmethod
+    def append_tail(cls, element, container):
+        """Appends tail as a new paragraph."""
+        paragraph = cls.get_new_paragraph(container)
+        text = replace_whitespaces(element.tail)
+        if not text:
+            return container
+
+        style = None
+        if element.getparent().tag == 'blockquote':
+            style = 'Intense Quote Char'
+
+        paragraph.add_run(text=text, style=style)
+        return container
+
+
+class CharacterTailMixin:
+
+    @classmethod
+    def append_tail(cls, element, container):
+        """Appends tail to the current paragraph."""
+        text = replace_whitespaces(element.tail)
+        run = container.add_run(text=text)
+        run = cls._apply_parent_formatting(element, run)
+        return container
+
+
 class TagDispatcher(object):
     @classmethod
     def append_head(cls, element, container):

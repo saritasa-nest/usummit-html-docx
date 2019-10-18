@@ -1,14 +1,15 @@
-from . import ParentTagMixin, TagDispatcher, replace_whitespaces
+from . import (CharacterTailMixin, ParentTagMixin, TagDispatcher,
+               replace_whitespaces)
 
 
-class EmphasisDispatcher(ParentTagMixin, TagDispatcher):
+class EmphasisDispatcher(
+    ParentTagMixin,
+    CharacterTailMixin,
+    TagDispatcher
+):
     @classmethod
     def append_head(cls, element, container):
         return cls._append_emphasis(element.text, element, container)
-
-    @classmethod
-    def append_tail(cls, element, container):
-        return cls._append_emphasis(element.tail, element, container)
 
     @classmethod
     def _append_emphasis(cls, text, element, container):
@@ -19,5 +20,5 @@ class EmphasisDispatcher(ParentTagMixin, TagDispatcher):
         text = replace_whitespaces(text)
         run = container.add_run(text=text)
         run.italic = True
-        run = cls._apply_parent_formatting(element, run)
+        cls._apply_parent_formatting(element, run)
         return container

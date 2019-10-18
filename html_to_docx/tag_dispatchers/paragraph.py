@@ -1,16 +1,11 @@
-from . import TagDispatcher, replace_whitespaces
+from . import ParagraphTailMixin, TagDispatcher, replace_whitespaces
 
 
-class ParagraphDispatcher(TagDispatcher):
+class ParagraphDispatcher(ParagraphTailMixin, TagDispatcher):
     @classmethod
     def append_head(cls, element, container):
         paragraph = cls.get_new_paragraph(container)
         return cls._append_paragraph(element.text, element, paragraph)
-
-    @classmethod
-    def append_tail(cls, element, container):
-        paragraph = cls.get_current_paragraph(container)
-        return cls._append_paragraph(element.tail, element, paragraph)
 
     @classmethod
     def _append_paragraph(cls, text, element, container):

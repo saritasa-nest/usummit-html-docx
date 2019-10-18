@@ -2,18 +2,15 @@ from docx.enum.style import WD_STYLE_TYPE
 from docx.shared import Pt
 
 from ..utils import get_document, get_or_add_style, parse_style
-from . import ParentTagMixin, TagDispatcher, replace_whitespaces
+from . import (CharacterTailMixin, ParentTagMixin, TagDispatcher,
+               replace_whitespaces)
 
 
-class SpanDispatcher(ParentTagMixin, TagDispatcher):
+class SpanDispatcher(ParentTagMixin, CharacterTailMixin, TagDispatcher):
 
     @classmethod
     def append_head(cls, element, container):
         return cls._append_span(element.text, element, container)
-
-    @classmethod
-    def append_tail(cls, element, container):
-        return cls._append_span(element.tail, element, container)
 
     @classmethod
     def _append_span(cls, text, element, container):
@@ -41,6 +38,5 @@ class SpanDispatcher(ParentTagMixin, TagDispatcher):
         else:
             run = container.add_run(text=text)
 
-        run = cls._apply_parent_formatting(element, run)
-
+        cls._apply_parent_formatting(element, run)
         return container

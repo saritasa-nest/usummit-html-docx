@@ -1,15 +1,10 @@
-# encoding: utf-8
-from . import TagDispatcher
+from . import ParagraphTailMixin, TagDispatcher
 
 
-class CodeDispatcher(TagDispatcher):
+class CodeDispatcher(ParagraphTailMixin, TagDispatcher):
     @classmethod
     def append_head(cls, element, container):
         return cls._append_code(element.text, container)
-
-    @classmethod
-    def append_tail(cls, element, container):
-        return cls._append_code(element.tail, container)
 
     @classmethod
     def _append_code(cls, text, container):

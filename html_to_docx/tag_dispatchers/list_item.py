@@ -1,6 +1,4 @@
-import docx
-
-from . import TagDispatcher, replace_whitespaces
+from . import ParagraphTailMixin, TagDispatcher, replace_whitespaces
 
 _list_style = dict(
     ol='ListNumber',
@@ -8,16 +6,11 @@ _list_style = dict(
 )
 
 
-class ListItemDispatcher(TagDispatcher):
+class ListItemDispatcher(ParagraphTailMixin, TagDispatcher):
     @classmethod
     def append_head(cls, element, container):
         paragraph = cls.get_new_paragraph(container)
         return cls._append_list_item(element, element.text, paragraph)
-
-    @classmethod
-    def append_tail(cls, element, container):
-        paragraph = cls.get_current_paragraph(container)
-        return cls._append_list_item(element, element.tail, paragraph)
 
     @classmethod
     def _append_list_item(cls, element, text, container):
@@ -31,6 +24,5 @@ class ListItemDispatcher(TagDispatcher):
         style = _list_style.get(element.getparent().tag, 'ListBullet')
         container.style = style
         container.add_run(text)
-        container.paragraph_format.space_after = docx.shared.Pt(0)
 
         return container
