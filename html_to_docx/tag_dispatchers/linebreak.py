@@ -1,21 +1,8 @@
-from docx.enum.text import WD_BREAK
-
-from . import ParagraphTailMixin, TagDispatcher, replace_whitespaces
+from . import ParagraphTailMixin, TagDispatcher
 
 
 class LineBreakDispatcher(ParagraphTailMixin, TagDispatcher):
     @classmethod
     def append_head(cls, element, container):
-        return cls._append_line_break(element, container)
-
-    @classmethod
-    def _append_line_break(cls, element, container):
-        """
-        <br> Creates a break item inside the given container.
-        """
-        element.tail = replace_whitespaces(element.tail)
-        element.tail = element.tail.lstrip()
-
-        run = container.add_run()
-        run.add_break(break_type=WD_BREAK.LINE_CLEAR_RIGHT)
-        return container
+        paragraph = cls.get_new_paragraph(container)
+        return paragraph

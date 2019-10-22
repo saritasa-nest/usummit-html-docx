@@ -3,6 +3,21 @@ from docx import Document
 from html_to_docx import add_html, create_document_from_html
 
 example_html = """
+<h1>H1</h1>
+<br>
+<strong>Bbbbbbbbbbbbbbb</strong>
+<br>
+<strong><em>Bbbbbiiiiiiiii</em></strong>
+<br>
+<em>Iiiiiiiiiiiii</em>
+<br>
+Ssssssssssssssss
+<br>
+<u>Uuuuuuuuuuuuuu</u>
+<h2>H2</h2>
+<br>
+Text for h2
+<br>
 <h1>Header level 1</h1>
 Unwrapped text
 <h2>Header level 2</h2>

@@ -33,7 +33,7 @@ class ParagraphTailMixin:
     def append_tail(cls, element, container):
         """Appends tail as a new paragraph."""
         paragraph = cls.get_new_paragraph(container)
-        text = replace_whitespaces(element.tail)
+        text = replace_whitespaces(element.tail).strip()
         if not text:
             return container
 
@@ -103,4 +103,4 @@ def replace_whitespaces(text):
         text = ' '.join(text.split('\n'))
         text = re.sub(' +', ' ', text)
 
-    return text if text else ''
+    return text.strip() if text else ''
