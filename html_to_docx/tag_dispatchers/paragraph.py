@@ -20,5 +20,6 @@ class ParagraphDispatcher(ParagraphTailMixin, TagDispatcher):
         if element.getparent().tag == 'blockquote':
             style = 'Intense Quote Char'
 
+        container.style = 'Normal'
         container.add_run(text=text, style=style)
         return container
