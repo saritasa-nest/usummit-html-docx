@@ -103,4 +103,4 @@ def replace_whitespaces(text):
         text = ' '.join(text.split('\n'))
         text = re.sub(' +', ' ', text)
 
-    return text.strip() if text else ''
+    return text if text else ''

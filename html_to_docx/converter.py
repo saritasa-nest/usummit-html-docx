@@ -46,7 +46,7 @@ class DocxBuilder(object):
         for child in children:
             container = self._append_docx_elements(child, container, plain_links)
 
-        tail = '' if not html_element.tail else html_element.tail.strip()
+        tail = '' if not html_element.tail else html_element.tail
         if not tail:
             return container
 
