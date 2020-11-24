@@ -77,10 +77,12 @@ def set_list_number(doc, par, prev=None, level=None, num=True):
                     return min(int(x) for x in ids)
         return 0
 
-    if (prev is None or
+    if (
+            prev is None or
             prev._p.pPr is None or
             prev._p.pPr.numPr is None or
-            prev._p.pPr.numPr.numId is None):
+            prev._p.pPr.numPr.numId is None
+    ):
         if level is None:
             level = 0
         numbering = doc.part.numbering_part.numbering_definitions._numbering
@@ -97,5 +99,6 @@ def set_list_number(doc, par, prev=None, level=None, num=True):
             level = prev._p.pPr.numPr.ilvl.val
         # Get the previous concrete numbering ID
         num = prev._p.pPr.numPr.numId.val
+
     par._p.get_or_add_pPr().get_or_add_numPr().get_or_add_numId().val = num
     par._p.get_or_add_pPr().get_or_add_numPr().get_or_add_ilvl().val = level

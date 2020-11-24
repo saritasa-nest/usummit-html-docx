@@ -21,7 +21,11 @@ Text for h2
 <h1>Header level 1</h1>
 Unwrapped text
 <h2>Header level 2</h2>
+<div>
+olala
 <p><u>u <em>u+em <strong>u+em+strong </em>u+strong </strong>u</u></p>
+</div>
+alala
 <p><u>u <em>u+em <strike>u+em+strike </em>u+strike </strike>u</u></p>
 <p><u>u <span style="font-size: 24px;">u+span </span></u></p>
 <p><span style="font-size: 24px;">CHAIR: Jorge Cortes</span></p>
@@ -34,7 +38,8 @@ Unwrapped text
 <br>PRESENTER: Lars Bullinger
 <p>before link <a href="https://github.com/">github link</a> link tail</p>
 <ul><li>one</li><li>two</li></ul>
-<ol><li>one</li><li>two</li></ol>
+<ol><li>one</li><li>two</li><li><a href="https://github.com/">github link</a> link tail</p></li></ol>
+some tail
 """
 
 document = Document()
