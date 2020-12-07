@@ -22,7 +22,7 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     install_requires=[
-        "lxml==4.4.1",
+        "lxml==4.6.1",
         "python-docx==0.8.7",
     ],
 )
