@@ -40,6 +40,8 @@ alala
 <ul><li>one</li><li>two</li></ul>
 <ol><li>one</li><li>two</li><li><a href="https://github.com/">github link</a> link tail</p></li></ol>
 some tail
+<p>   </p>
+<comment>some comment</comment>
 """
 
 document = Document()

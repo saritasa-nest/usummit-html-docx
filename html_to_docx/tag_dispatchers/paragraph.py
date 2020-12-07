@@ -1,3 +1,5 @@
+from docx.shared import RGBColor
+from lxml.etree import tostring
 from . import ParagraphTailMixin, TagDispatcher, replace_whitespaces
 
 
@@ -22,4 +24,24 @@ class ParagraphDispatcher(ParagraphTailMixin, TagDispatcher):
 
         container.style = 'Normal'
         container.add_run(text=text, style=style)
+        return container
+
+
+class UnsupportedTagDispatcher(ParagraphDispatcher):
+    """Dispatch unsupported tags.
+
+    Dispatch as a paragraph with raw HTML and red font color.
+
+    """
+    @classmethod
+    def _append_paragraph(cls, text, element, container):
+        """Append content as raw HTML with red font color."""
+        text = str(tostring(element), 'utf-8')
+        text = replace_whitespaces(text)
+
+        container.style = 'Normal'
+        run = container.add_run(text=text)
+        font = run.font
+        font.color.rgb = RGBColor(0xff, 0x00, 0x00)
+
         return container

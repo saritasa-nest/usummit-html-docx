@@ -11,7 +11,10 @@ from .tag_dispatchers.img import ImgDispatcher
 from .tag_dispatchers.linebreak import LineBreakDispatcher
 from .tag_dispatchers.link import LinkAsTextDispatcher, LinkDispatcher
 from .tag_dispatchers.list_item import ListItemDispatcher
-from .tag_dispatchers.paragraph import ParagraphDispatcher
+from .tag_dispatchers.paragraph import (
+    ParagraphDispatcher,
+    UnsupportedTagDispatcher,
+)
 from .tag_dispatchers.span import SpanDispatcher
 from .tag_dispatchers.strike import StrikeDispatcher
 from .tag_dispatchers.strong import StrongDispatcher
@@ -27,11 +30,13 @@ def get_tag_dispatcher(html_tag, plain_links=False):
     else:
         _dispatch_html['a'] = LinkDispatcher
 
-    return _dispatch_html.get(html_tag)
+    return _dispatch_html.get(html_tag, unsupported_tag_dispatcher)
 
 
 # map of HTML tags and their corresponding objects
 heading_dispatcher = HeadingDispatcher()
+
+unsupported_tag_dispatcher = UnsupportedTagDispatcher()
 
 _dispatch_html = dict(
     p=ParagraphDispatcher(),
