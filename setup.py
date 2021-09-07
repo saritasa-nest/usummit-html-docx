@@ -23,6 +23,6 @@ setuptools.setup(
     ],
     install_requires=[
         "lxml==4.6.1",
-        "python-docx==0.8.7",
+        "python-docx>=0.8.8",
     ],
 )
