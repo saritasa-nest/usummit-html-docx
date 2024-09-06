@@ -58,7 +58,10 @@ _dispatch_html = dict(
     i=EmphasisDispatcher(),
     span=SpanDispatcher(),
     u=UnderlineDispatcher(),
+    # Both `<strike>` and `<s>` tags will be converted
+    # into striketrough text
     strike=StrikeDispatcher(),
+    s=StrikeDispatcher(),
     # Convert <div>, <ul> and <ol> into line breaks.
     # This is done because these tags cannot be converted directly into any
     # element of docx, and paragraph allows saving unwrapped content inside
