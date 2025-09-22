@@ -12,18 +12,19 @@ class ParentTagMixin:
     @classmethod
     def _apply_parent_formatting(cls, element, run):
         """Applies formatting implemented in a parent element."""
-        if not element.getparent():
+        parent = element.getparent()
+        if parent is None:
             return run
-        if element.getparent().tag in ['em', 'i']:
+        if parent.tag in ['em', 'i']:
             run.italic = True
-        if element.getparent().tag in ['strong', 'b']:
+        if parent.tag in ['strong', 'b']:
             run.bold = True
-        if element.getparent().tag == 'u':
+        if parent.tag == 'u':
             run.underline = WD_UNDERLINE.SINGLE
 
         # Applies formatting from parent's parent. Example:
         # <u><strong><em>text</em></strong></u>
-        run = cls._apply_parent_formatting(element.getparent(), run)
+        run = cls._apply_parent_formatting(parent, run)
         return run
 
 
