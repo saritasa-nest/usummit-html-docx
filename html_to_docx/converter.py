@@ -51,7 +51,7 @@ class DocxBuilder(object):
             return container
 
         parent = html_element.getparent()
-        if parent and not html_element_is_paragraph(parent):
+        if parent is not None and not html_element_is_paragraph(parent):
             dispatcher = get_tag_dispatcher(parent.tag, plain_links)
             if not dispatcher:
                 return container
